@@ -25,6 +25,11 @@ describe('App', () => {
     expect(scrollToTop.exists()).toBe(true)
   })
 
+  it('renders the Page component on all app views', () => {
+    const app = shallow(<App actions={{}}><div/></App>, {disableLifecycleMethods: true})
+    expect(app.find('Page').exists()).toBe(true)
+  })
+
   it('renders the global header component on all app views', () => {
     const app = shallow(<App actions={{}}><div/></App>, {disableLifecycleMethods: true})
     expect(app.find('GlobalHeader').exists()).toBe(true)

@@ -12,6 +12,7 @@ import Footer from 'views/Footer'
 import userNameFormatter from 'utils/userNameFormatter'
 import {config} from 'common/config'
 import {ScrollToTop} from 'common/app/ScrollToTop'
+import {Page} from '@cwds/components'
 
 const RouterScrollToTop = withRouter(ScrollToTop)
 
@@ -28,6 +29,7 @@ export class App extends React.Component {
     const logoutUrl = `${config().base_path.replace(/\/$/, '')}/logout`
     return (
       <RouterScrollToTop>
+        <Page layout= 'dashboard'/>
         <GlobalHeader profileName={this.props.fullName} logoutCallback={() => (window.location.href = logoutUrl)} />
         {this.props.children}
         <Footer />
