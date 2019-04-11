@@ -12,7 +12,7 @@ import Footer from 'views/Footer'
 import userNameFormatter from 'utils/userNameFormatter'
 import {config} from 'common/config'
 import {ScrollToTop} from 'common/app/ScrollToTop'
-import {Page} from '@cwds/components'
+import {Page, CaresProvider, MenuItem, UncontrolledUserMenu} from '@cwds/components'
 
 const RouterScrollToTop = withRouter(ScrollToTop)
 
@@ -27,10 +27,23 @@ export class App extends React.Component {
 
   render() {
     const logoutUrl = `${config().base_path.replace(/\/$/, '')}/logout`
+
+    const UserMenu = (state) => {
+      const name = this.props.fullName
+      return (
+        <UncontrolledUserMenu label={name}>
+          <MenuItem className={'no-uppercase'} tag={'a'} href={logoutUrl}>
+            Logout
+          </MenuItem>
+        </UncontrolledUserMenu>
+      )
+    }
     return (
       <RouterScrollToTop>
-        <Page layout= 'dashboard'/>
-        <GlobalHeader profileName={this.props.fullName} logoutCallback={() => (window.location.href = logoutUrl)} />
+        <CaresProvider UserMenu={UserMenu}>
+          <Page layout= 'dashboard' />
+        </CaresProvider>
+        <GlobalHeader profileName={this.props.fullName} />
         {this.props.children}
         <Footer />
       </RouterScrollToTop>
