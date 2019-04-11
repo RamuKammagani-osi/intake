@@ -40,10 +40,11 @@ export class App extends React.Component {
 
     return (
       <RouterScrollToTop>
-        <CaresProvider UserMenu={UserMenu}>
-          <Page layout= 'dashboard'/>
-          {this.props.children}
-          <Footer />
+        <CaresProvider UserMenu={UserMenu} Brand= 'CWS-CARES'>
+          <Page layout= 'dashboard'>
+            {this.props.children}
+            <Footer />
+          </Page>
         </CaresProvider>
       </RouterScrollToTop>
     )

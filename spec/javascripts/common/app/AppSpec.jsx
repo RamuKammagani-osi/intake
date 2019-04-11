@@ -45,5 +45,6 @@ describe('App', () => {
     const app = mount(<App actions={{fetchUserInfoAction, fetchSystemCodesAction, checkStaffPermission}} fullName={''}><div /></App>)
 
     expect(app.find(CaresProvider).length).toEqual(1)
+    expect(app.find('CaresProvider[Brand="CWS-CARES"]').exists()).toBe(true)
   })
 })
