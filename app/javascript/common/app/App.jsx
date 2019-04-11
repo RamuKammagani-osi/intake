@@ -7,7 +7,6 @@ import {fetch as fetchUserInfoAction} from 'actions/userInfoActions'
 import {fetch as fetchSystemCodesAction} from 'actions/systemCodesActions'
 import {checkStaffPermission} from 'actions/staffActions'
 import {bindActionCreators} from 'redux'
-import {GlobalHeader} from 'react-wood-duck'
 import Footer from 'views/Footer'
 import userNameFormatter from 'utils/userNameFormatter'
 import {config} from 'common/config'
@@ -38,14 +37,14 @@ export class App extends React.Component {
         </UncontrolledUserMenu>
       )
     }
+
     return (
       <RouterScrollToTop>
         <CaresProvider UserMenu={UserMenu}>
-          <Page layout= 'dashboard' />
+          <Page layout= 'dashboard'/>
+          {this.props.children}
+          <Footer />
         </CaresProvider>
-        <GlobalHeader profileName={this.props.fullName} />
-        {this.props.children}
-        <Footer />
       </RouterScrollToTop>
     )
   }

@@ -32,11 +32,6 @@ describe('App', () => {
     expect(app.find('Page[layout="dashboard"]').exists()).toBe(true)
   })
 
-  it('renders the global header component on all app views', () => {
-    const app = shallow(<App actions={{}}><div/></App>, {disableLifecycleMethods: true})
-    expect(app.find('GlobalHeader').exists()).toBe(true)
-  })
-
   it('renders its children', () => {
     const app = shallow(<App actions={{}}><div/></App>, {disableLifecycleMethods: true})
     expect(app.find('div').exists()).toBe(true)

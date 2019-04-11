@@ -9,8 +9,8 @@ describe('Footer', () => {
   })
 
   it('renders an invisible header for accessibility outline', () => {
-    const header = component.find('h2')
-    expect(header.exists()).toEqual(true)
-    expect(header.props().className).toEqual('hidden')
+    const footer = component.find('div')
+    expect(footer.exists()).toEqual(true)
+    expect(footer.props()['aria-label']).toEqual('footer')
   })
 })
