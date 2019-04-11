@@ -22,11 +22,11 @@ export function sdmPath() {
   return config().sdm_path
 }
 
-function isHotline(location) {
+export function isHotline(location) {
   return location && location.pathname.indexOf('/screenings') >= 0
 }
 
-function isSnapshot(location) {
+export function isSnapshot(location) {
   return location && location.pathname.indexOf('/snapshot') >= 0
 }
 

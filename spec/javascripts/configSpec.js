@@ -1,4 +1,4 @@
-import {isFeatureActive, isFeatureInactive, config, jsClipboardSupported, sdmPath, isAdvancedSearchOn, isSearchByAddressOn} from 'common/config'
+import {isFeatureActive, isFeatureInactive, config, jsClipboardSupported, sdmPath, isAdvancedSearchOn, isSearchByAddressOn, isHotline, isSnapshot} from 'common/config'
 
 describe('intake config', () => {
   let windowOrg
@@ -84,6 +84,26 @@ describe('intake config', () => {
 
     it('returns the sdm path', () => {
       expect(sdmPath()).toEqual(sdmPathString)
+    })
+  })
+
+  describe('isHotline', () => {
+    it('returns false if pathname does not include /screenings', () => {
+      expect(isHotline({pathname: '/'})).toEqual(false)
+    })
+
+    it('returns true if pathname includes /screenings', () => {
+      expect(isHotline({pathname: '/screenings'})).toEqual(true)
+    })
+  })
+
+  describe('isSnapshot', () => {
+    it('returns false if pathname does not include /screenings', () => {
+      expect(isSnapshot({pathname: '/'})).toEqual(false)
+    })
+
+    it('returns true if pathname includes /screenings', () => {
+      expect(isSnapshot({pathname: '/snapshot'})).toEqual(true)
     })
   })
 
