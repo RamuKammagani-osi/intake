@@ -17,6 +17,8 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.0",
+    "@cwds/components": "1.2.1",
+    "@cwds/core": "^1.2.1",
     "@rails/webpacker": "^4.0.2",
     "autoprefixer": "^7.1.2",
     "babel-loader": "^8.0.5",
