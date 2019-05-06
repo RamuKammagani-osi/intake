@@ -105,7 +105,7 @@ export default class Autocompleter extends Component {
   }
 
   renderMenu(items, _searchTerm, _style) {
-    return (<div className='autocomplete-menu'>{items}</div>)
+    return (<div className='autocomplete-menu' style={{'display': 'none'}}>{items}</div>)
   }
 
   renderEachItem(item, id, isHighlighted) {

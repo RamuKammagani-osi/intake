@@ -20,6 +20,7 @@ import SnapshotIntro from 'snapshots/SnapshotIntro'
 import {selectParticipants} from 'selectors/participantSelectors'
 import BreadCrumb from 'containers/common/BreadCrumb'
 import {getHasGenericErrorValueSelector} from 'selectors/errorsSelectors'
+import PersonSearchResultsContainer from 'containers/snapshot/PersonSearchResultsContainer'
 
 const isDuplicatePerson = (participants, id) =>
   participants.some(x => x.id === id)
@@ -68,6 +69,7 @@ export class SnapshotPage extends React.Component {
           {participants.map(({id}) => (
             <PersonCardView key={id} personId={id} />
           ))}
+          <PersonSearchResultsContainer />
           <RelationshipsCardContainer />
           <HistoryOfInvolvementContainer
             empty={<EmptyHistory />}

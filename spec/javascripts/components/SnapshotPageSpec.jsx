@@ -19,6 +19,11 @@ describe('SnapshotPage', () => {
     expect(snapshotPage.find('SnapshotIntro').exists()).toEqual(true)
   })
 
+  it('renders a PersonSearchResults', () => {
+    const snapshotPage = renderSnapshotPage({})
+    expect(snapshotPage.find('Connect(PersonSearchResults)').exists()).toEqual(true)
+  })
+
   it('renders history of involvement', () => {
     const snapshotPage = renderSnapshotPage({})
     expect(snapshotPage.find('Connect(HistoryOfInvolvement)').exists()).toBe(true)
