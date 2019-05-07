@@ -9,7 +9,6 @@ import HistoryTableContainer from 'containers/common/HistoryTableContainer'
 import EmptyHistory from 'views/history/EmptyHistory'
 import PersonSearchFormContainer from 'containers/common/PersonSearchFormContainer'
 import ErrorDetail from 'common/ErrorDetail'
-import ScreeningSideBar from 'screenings/ScreeningSideBar'
 import AllegationsCard from 'screenings/AllegationsCard'
 import CrossReportCard from 'screenings/CrossReportCard'
 import DecisionCard from 'screenings/DecisionCard'
@@ -136,12 +135,11 @@ export class ScreeningPage extends React.Component {
   }
 
   renderScreening() {
-    const {loaded, participants} = this.props
+    const {loaded} = this.props
 
     if (loaded) {
       return (
         <div className='row'>
-          <ScreeningSideBar participants={participants} />
           {this.renderBody()}
         </div>
       )

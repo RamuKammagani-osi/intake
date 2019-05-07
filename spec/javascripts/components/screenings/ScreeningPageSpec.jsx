@@ -131,17 +131,6 @@ describe('ScreeningPage', () => {
   })
 
   describe('render', () => {
-    it('renders a sidebar with participants', () => {
-      const screeningPage = renderScreeningPage({
-        participants: [],
-      })
-      const screeningSideBar = screeningPage.find('ScreeningSideBar')
-      expect(screeningSideBar.exists()).toBe(true)
-      expect(screeningSideBar.props()).toEqual({
-        participants: [],
-      })
-    })
-
     it('renders a page header', () => {
       expect(renderScreeningPage({}).find('Connect(PageHeader)').exists()).toBe(true)
     })
