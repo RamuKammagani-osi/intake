@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import PersonSearchResults from 'snapshots/PersonSearchResults'
+import PersonSearchResults from 'common/search/PersonSearchResults'
 import {
   selectPeopleResults,
   selectResultsTotalValue,

@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import PersonSearchResults from 'snapshots/PersonSearchResults'
+import PersonSearchResults from 'common/search/PersonSearchResults'
 import {SHOW_MODE} from 'actions/screeningPageActions'
 
 describe('PersonSearchResults', () => {
