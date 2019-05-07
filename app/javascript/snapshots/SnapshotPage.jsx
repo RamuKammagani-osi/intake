@@ -21,6 +21,7 @@ import {selectParticipants} from 'selectors/participantSelectors'
 import BreadCrumb from 'containers/common/BreadCrumb'
 import {getHasGenericErrorValueSelector} from 'selectors/errorsSelectors'
 import PersonSearchResultsContainer from 'containers/snapshot/PersonSearchResultsContainer'
+import {selectPeopleResults} from 'selectors/peopleSearchSelectors'
 
 const isDuplicatePerson = (participants, id) =>
   participants.some(x => x.id === id)
@@ -56,6 +57,8 @@ export class SnapshotPage extends React.Component {
   }
 
   renderBody(participants) {
+    const {results} = this.props
+    const hasResults = results && results.length !== 0
     return (
       <div className="col-md-12 col-xs-12 snapshot-inner-container">
         <div className="row">
@@ -69,7 +72,7 @@ export class SnapshotPage extends React.Component {
           {participants.map(({id}) => (
             <PersonCardView key={id} personId={id} />
           ))}
-          <PersonSearchResultsContainer />
+          {hasResults && <PersonSearchResultsContainer />}
           <RelationshipsCardContainer />
           <HistoryOfInvolvementContainer
             empty={<EmptyHistory />}
@@ -104,6 +107,7 @@ SnapshotPage.propTypes = {
   createSnapshotPerson: PropTypes.func,
   hasGenericErrors: PropTypes.bool,
   participants: PropTypes.array,
+  results: PropTypes.array,
   startOver: PropTypes.func,
   unmount: PropTypes.func,
 }
@@ -111,6 +115,7 @@ SnapshotPage.propTypes = {
 const mapStateToProps = state => ({
   hasGenericErrors: getHasGenericErrorValueSelector(state),
   participants: selectParticipants(state).toJS(),
+  results: selectPeopleResults(state).toJS(),
 })
 
 export const mapDispatchToProps = dispatch => ({
