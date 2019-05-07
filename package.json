@@ -63,6 +63,7 @@
     "react-router": "3.2.0",
     "react-router-redux": "^4.0.8",
     "react-select": "^1.0.0-rc.5",
+    "react-table": "^6.10.0",
     "react-widgets": "^3.4.8",
     "react-wood-duck": "0.1.82",
     "redux": "3.6.0",
