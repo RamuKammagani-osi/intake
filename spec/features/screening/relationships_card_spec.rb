@@ -426,11 +426,6 @@ feature 'Relationship card' do
               expect(page).to have_content('John Florence, PhD Brother (Half)')
               expect(page).to have_content('05/05/1986 (32 yrs)')
             end
-
-            scenario 'should display the name of the newly attached person in sidebar' do
-              assign_relationship(tag: 'td', element_text: 'Jake Campbell', link_text: 'Attach')
-              should_have_content('Jane Campbell', inside: 'div.side-bar')
-            end
           end
 
           describe '.attached-person' do

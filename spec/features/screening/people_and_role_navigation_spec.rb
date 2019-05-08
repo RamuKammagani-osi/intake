@@ -100,11 +100,5 @@ feature 'Create participant' do
       fill_in 'First Name', with: 'Second Person'
       expect(find_field('First Name').value).to eq('Second Person')
     end
-
-    within all('.navlink')[1] do
-      expect(page).to have_content 'People & Roles'
-      expect(page).to have_content marge.first_name
-      expect(page).to have_content 'Unknown Person'
-    end
   end
 end
