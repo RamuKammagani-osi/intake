@@ -29,7 +29,7 @@ RUN  apt-get install -y \
     unzip \
     man
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # Credits to https://github.com/elgalu/docker-selenium
