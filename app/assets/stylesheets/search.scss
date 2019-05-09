@@ -111,14 +111,17 @@
   }
 }
 
-.modal-header {
-  padding: 1.5rem 3rem;
-}
-
 .modal-body {
   color: $dark-grey-woodduck;
   font-size: 1.8rem;
   padding: 1.5rem 3rem;
+}
+
+.modal-title{
+  .card-title{
+    font-size: 2.5rem;
+    padding: 6px;
+  }
 }
 
 .modal-footer-button {

@@ -4,7 +4,8 @@ import Autocompleter from 'common/search/Autocompleter'
 import {withRouter} from 'react-router'
 import {PersonSearchFieldsPropType} from 'data/personSearch'
 import {isAdvancedSearchOn} from 'common/config'
-import {ModalComponent} from 'react-wood-duck'
+// import {ModalComponent} from 'react-wood-duck'
+import ModalComponent from '../../common/Modal'
 import SearchModalBody from 'common/search/SearchModalBody'
 
 class PersonSearchForm extends React.Component {
@@ -26,7 +27,9 @@ class PersonSearchForm extends React.Component {
   }
 
   handleShowModal() {
-    this.setState({show: true})
+    this.setState(prevState => ({
+      show: !prevState.show,
+    }))
   }
 
   handleKeyPress(e) {
@@ -36,17 +39,16 @@ class PersonSearchForm extends React.Component {
   }
 
   renderModal() {
-    const ModalFooter = () => {
-      return <div><button className='btn modal-footer-button' onClick={this.closeModal}>OK</button></div>
-    }
+    // const ModalFooter = () => {
+    //   return <div><button className='btn modal-footer-button' onClick={this.closeModal}>OK</button></div>
+    // }
     return (
-      <ModalComponent
-        closeModal={this.closeModal}
-        showModal={this.state.show}
-        modalTitle='How to Use Snapshot'
+      <ModalComponent isOpen={this.state.show}
+        toggle={this.handleShowModal}
+        modalTitle="How to Use Snapshot"
         modalBody={<SearchModalBody />}
-        modalSize='large'
-        modalFooter={<ModalFooter />}
+        okText="Ok"
+        size="xl"
       />
     )
   }
@@ -61,7 +63,7 @@ class PersonSearchForm extends React.Component {
         <div className="card-header">
           <h2>Snapshot Search</h2>
           {advancedSearchFeatureFlag && <span role='button' className='gap-right search-modal-info' tabIndex="0" onClick={this.handleShowModal} onKeyPress={this.handleKeyPress}>
-                      How to Use Snapshot
+          How to Use Snapshot
           </span>}
         </div>
         <div className={`card-body ${classNameAdvancedSearchDisabled}`}>

@@ -2,7 +2,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {PersonSearchForm} from 'views/people/PersonSearchForm'
 import * as IntakeConfig from 'common/config'
-import {ModalComponent} from 'react-wood-duck'
+import {ModalComponent} from 'common/Modal'
 import SearchModalBody from 'common/search/SearchModalBody'
 
 describe('PersonSearchForm', () => {
@@ -125,8 +125,9 @@ describe('PersonSearchForm', () => {
     expect(instance.state.show).toBe(false)
   })
 
-  it('renders ModalComponent', () => {
+  fit('renders ModalComponent', () => {
     const component = renderPersonSearchForm({}).setState({show: true}).find(ModalComponent)
+    console.log('component', component.debug())
     expect(component.length).toBe(1)
     expect(component.props().modalTitle).toEqual('How to Use Snapshot')
     expect(component.props().modalSize).toEqual('large')
