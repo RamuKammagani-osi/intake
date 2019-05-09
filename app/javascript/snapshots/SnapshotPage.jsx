@@ -22,6 +22,7 @@ import BreadCrumb from 'containers/common/BreadCrumb'
 import {getHasGenericErrorValueSelector} from 'selectors/errorsSelectors'
 import PersonSearchResultsContainer from 'containers/snapshot/PersonSearchResultsContainer'
 import {selectPeopleResults} from 'selectors/peopleSearchSelectors'
+import {isAdvancedSearchOn} from 'common/config'
 
 const isDuplicatePerson = (participants, id) =>
   participants.some(x => x.id === id)
@@ -57,7 +58,8 @@ export class SnapshotPage extends React.Component {
   }
 
   renderBody(participants) {
-    const {results} = this.props
+    const {results, location} = this.props
+    const advancedSearchFeatureFlag = isAdvancedSearchOn(location)
     const hasResults = results && results.length !== 0
     return (
       <div className="col-md-12 col-xs-12 snapshot-inner-container">
@@ -72,7 +74,7 @@ export class SnapshotPage extends React.Component {
           {participants.map(({id}) => (
             <PersonCardView key={id} personId={id} />
           ))}
-          {hasResults && <PersonSearchResultsContainer />}
+          {advancedSearchFeatureFlag && hasResults && <PersonSearchResultsContainer />}
           <RelationshipsCardContainer />
           <HistoryOfInvolvementContainer
             empty={<EmptyHistory />}
@@ -106,6 +108,9 @@ SnapshotPage.propTypes = {
   createSnapshot: PropTypes.func,
   createSnapshotPerson: PropTypes.func,
   hasGenericErrors: PropTypes.bool,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
   participants: PropTypes.array,
   results: PropTypes.array,
   startOver: PropTypes.func,

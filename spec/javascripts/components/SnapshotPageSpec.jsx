@@ -2,12 +2,18 @@ import React from 'react'
 import {SnapshotPage, mapDispatchToProps} from 'snapshots/SnapshotPage'
 import {clear, resetPersonSearch} from 'actions/peopleSearchActions'
 import {shallow} from 'enzyme'
+import * as IntakeConfig from 'common/config'
 
 describe('SnapshotPage', () => {
   const renderSnapshotPage = ({participants = [], results = [], ...args}) => {
     const props = {participants, results, ...args}
     return shallow(<SnapshotPage {...props} />, {disableLifecycleMethods: true})
   }
+
+  beforeEach(() => {
+    spyOn(IntakeConfig, 'isFeatureInactive').and.returnValue(true)
+    spyOn(IntakeConfig, 'isFeatureActive').and.returnValue(false)
+  })
 
   it('renders a BreadCrumb', () => {
     const snapshotPage = renderSnapshotPage({})
@@ -20,6 +26,7 @@ describe('SnapshotPage', () => {
   })
 
   it('renders a PersonSearchResults', () => {
+    spyOn(IntakeConfig, 'isAdvancedSearchOn').and.returnValue(true)
     const results = [{fullName: 'Sarah Timson'}]
     const snapshotPage = renderSnapshotPage({results: results})
     expect(snapshotPage.find('Connect(PersonSearchResults)').exists()).toEqual(true)

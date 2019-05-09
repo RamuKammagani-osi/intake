@@ -34,8 +34,7 @@ export default class Autocompleter extends Component {
 
   searchAndFocus() {
     const {onChange, onSearch, isAdvancedSearchOn, personSearchFields} = this.props
-    const {
-      searchLastName, searchFirstName, searchMiddleName, searchClientId, searchSuffix, searchSsn,
+    const {searchLastName, searchFirstName, searchMiddleName, searchClientId, searchSuffix, searchSsn,
       searchDateOfBirth, searchApproximateAge, searchApproximateAgeUnits, searchByAgeMethod} = personSearchFields
     const suffixWithComma = searchSuffix ? `, ${searchSuffix}` : ''
     const lastNameWithSuffix = `${searchLastName}${suffixWithComma}`
@@ -105,7 +104,9 @@ export default class Autocompleter extends Component {
   }
 
   renderMenu(items, _searchTerm, _style) {
-    return (<div className='autocomplete-menu' style={{'display': 'none'}}>{items}</div>)
+    const {isAdvancedSearchOn} = this.props
+    const hideMenu = isAdvancedSearchOn ? 'none' : 'block'
+    return (<div className="autocomplete-menu" style={{display: hideMenu}}>{items}</div>)
   }
 
   renderEachItem(item, id, isHighlighted) {
